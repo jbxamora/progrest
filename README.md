@@ -3,6 +3,8 @@ As an Agile development team, We're excited to introduce "progrest", a comprehen
 
 ## DEVELOPMENT
 
+Communicate any changes need to file structure adding/removing folders
+
 ## Priority List
 
 - [ ] incomplete
