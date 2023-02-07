@@ -2,7 +2,71 @@
 As an Agile development team, We're excited to introduce "progrest", a comprehensive project management tool for non-profit organizations. Our goal is to make it easy for non-profits to manage their volunteer hours, donations, and impact metrics in one place. We will create a user-friendly interface for tracking volunteer hours, secure donation processing through a payment gateway, and measuring the impact of different projects. We will prioritize a responsive and accessible design to ensure that non-profits of all sizes can use the platform effectively. With "progrest", non-profits can focus on making a positive difference in the world, while having the tools they need to measure and communicate their impact effectively. Our Agile approach will allow me to deliver frequent updates and quickly iterate based on feedback from users.
 
 ## DEVELOPMENT
+```md
+### Requirements
+* Node.js + Express.js to create RESTful API
 
+ https://www.sitepoint.com/rest-api/#:~:text=A%20RESTful%20web%20service%20request,%2F123%3Fformat%3Djson%20.
+* Handlebars.js as a template engine
+
+https://handlebarsjs.com/guide/#block-helpers
+
+* MySQL + Sequelize ORM for database
+
+https://sequelize.org/
+
+https://dev.mysql.com/doc/
+
+* Must have both GET and POST requests routes
+
+* Must have one new library/package
+
+* Must have MVC paradigm folder structure
+
+* Must include authentication
+
+* Must portect secrets 
+
+* Deployed on Heroku
+
+* Polished UI
+
+* Responsive
+
+* Interactive
+
+* Best practice coding standards
+
+* Professional README
+
+### Presentation
+
+* Overall Concept 
+
+* Motivation
+
+* Design Process
+
+* Tech used + breif description
+
+* App demo
+
+* Directions for future development
+
+### Metrics
+
+* Concept 
+
+* Design
+
+* Functionality
+
+* Repo Quality
+
+* Presentation
+
+* Collaboration
+```
 Communicate any changes need to file structure adding/removing folders
 
 ## Priority List
