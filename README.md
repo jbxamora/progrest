@@ -21,6 +21,10 @@ https://dev.mysql.com/doc/
 
 * Must have one new library/package
 
+Charts.js - implement graph data - https://www.chartjs.org/docs/latest/
+
+Stripe - implement payment processors - https://www.npmjs.com/package/stripe
+
 * Must have MVC paradigm folder structure
 
 * Must include authentication
