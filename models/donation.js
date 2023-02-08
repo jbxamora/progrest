@@ -12,7 +12,7 @@ Donation.init(
       primaryKey: true,
       autoIncrement: true,
     },
-   Donator_name: {
+    Donator_name: {
       type: DataTypes.STRING,
       allowNull: false,
     },
