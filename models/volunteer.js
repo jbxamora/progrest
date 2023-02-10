@@ -43,7 +43,7 @@ Volunteer.init(
 );
 
 Volunteer.sum('hours').then(sum => {
-  res.render('portal',{Hours})
+  res.render('login',{Hours})
 })
 
 Volunteer.count().then(count => {
