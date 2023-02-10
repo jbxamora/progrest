@@ -2,7 +2,7 @@ const { Model, DataTypes } = require('sequelize');
 
 const sequelize = require('../config/connection.js');
 
-class Donation extends Model {}
+class Donation extends Model { }
 
 Donation.init(
   {
@@ -12,21 +12,25 @@ Donation.init(
       primaryKey: true,
       autoIncrement: true,
     },
-    Donator_name: {
+    donor_id: {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    Donation_amount:{
-        type: DataTypes.INTEGER,
-        allowNull: false,
+    date: {
+      type: DataTypes.DATEONLY,
+      allowNull: false,
     },
-    Date:{
-        type: DataTypes.DATEONLY,
-        allowNull: false,
+    amount: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
     },
-    Receipt_sent:{
-        type: DataTypes.BOOLEAN,
+      payment_method:{
+        type: DataTypes.STRING,
         allowNull: false,
+      },
+    Receipt_sent: {
+      type: DataTypes.BOOLEAN,
+      allowNull: false,
     }
   },
   {
