@@ -42,4 +42,9 @@ Volunteer.init(
   },
 );
 
+Volunteer.sum('hours').then(sum => {
+  res.render()
+})
+
+
 module.exports = Volunteer;
