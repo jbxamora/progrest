@@ -43,8 +43,11 @@ Volunteer.init(
 );
 
 Volunteer.sum('hours').then(sum => {
-  res.render()
+  res.render('portal',{Hours})
 })
 
+Volunteer.count().then(count => {
+  res.render('portal',{Volunteers});
+});
 
 module.exports = Volunteer;
