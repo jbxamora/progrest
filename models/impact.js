@@ -2,9 +2,9 @@
 
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
- class Impact extends Model {}
+class Impact extends Model { }
 
- Impact.init(
+Impact.init(
     {
         id: {
             type: DataTypes.INTEGER,
@@ -28,6 +28,6 @@ const sequelize = require('../config/connection');
         underscored: true,
         modelName: 'impact',
     }
- );
+);
 // Later add more metrics - connect a see more page for impacts
- module.exports = Impact;
+module.exports = Impact;

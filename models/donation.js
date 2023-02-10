@@ -24,10 +24,10 @@ Donation.init(
       type: DataTypes.INTEGER,
       allowNull: false,
     },
-      payment_method:{
-        type: DataTypes.STRING,
-        allowNull: false,
-      },
+    payment_method: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
     Receipt_sent: {
       type: DataTypes.BOOLEAN,
       allowNull: false,
