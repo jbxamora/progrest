@@ -1,10 +1,10 @@
-//donation impact
-
 const { Model, DataTypes } = require('sequelize');
-const sequelize = require('../config/connection');
-class Impact extends Model { }
 
-Impact.init(
+const sequelize = require('../config/connection');
+
+class Donor extends Model { }
+
+Donor.init(
     {
         id: {
             type: DataTypes.INTEGER,
@@ -12,22 +12,28 @@ Impact.init(
             primaryKey: true,
             autoIncrement: true,
         },
-        desc: {
+
+        name: {
             type: DataTypes.STRING,
             allowNull: false,
         },
-        outreach: {
+        email: {
             type: DataTypes.STRING,
             allowNull: false,
-        }
+            unique: true,
+            validate,
+            isEmail: true,
+        },
+        payment_info: {
+            type: DataTypes.STRING,
+            allowNull: false,
+        },
     },
     {
         sequelize,
         timestamps: false,
         freezeTableName: true,
         underscored: true,
-        modelName: 'impact',
-    }
+        modelName: 'donor',
+    },
 );
-// Later add more metrics - connect a see more page for impacts
-module.exports = Impact;

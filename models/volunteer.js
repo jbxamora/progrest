@@ -2,7 +2,7 @@ const { Model, DataTypes } = require('sequelize');
 
 const sequelize = require('../config/connection.js');
 
-class Volunteer extends Model {}
+class Volunteer extends Model { }
 
 Volunteer.init(
   {
@@ -12,25 +12,25 @@ Volunteer.init(
       primaryKey: true,
       autoIncrement: true,
     },
-   name: {
+    name: {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    email:{
-        type: DataTypes.STRING,
-        allowNull: false,
+    email: {
+      type: DataTypes.STRING,
+      allowNull: false,
     },
-    address:{
-        type: DataTypes.STRING,
-        allowNull: false,
+    address: {
+      type: DataTypes.STRING,
+      allowNull: false,
     },
-    project:{
-        type: DataTypes.STRING,
-        allowNull: false,
+    project: {
+      type: DataTypes.STRING,
+      allowNull: false,
     },
-    hours:{
-        type: DataTypes.INTEGER,
-        allowNull: false,
+    hours: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
     }
   },
   {
@@ -42,12 +42,29 @@ Volunteer.init(
   },
 );
 
+<<<<<<< HEAD
 Volunteer.sum('hours').then(sum => {
   res.render('login',{Hours})
+=======
+// Volunteer.sum('hours').then(sum => {
+//   res.render('portal', { Hours })
+// })
+
+Volunteer.findAll({
+  attributes: [
+    'project',
+    [sequelize.fn('sum', sequelize.col('hours')), 'totalHours']
+  ],
+  group: ['project']
+>>>>>>> origin
 })
+  .then(results => {
+    res.render('portal', { results });
+  });
+
 
 Volunteer.count().then(count => {
-  res.render('portal',{Volunteers});
+  res.render('portal', { Volunteers });
 });
 
 module.exports = Volunteer;

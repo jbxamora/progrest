@@ -1,10 +1,10 @@
-//donation impact
-
 const { Model, DataTypes } = require('sequelize');
-const sequelize = require('../config/connection');
-class Impact extends Model { }
 
-Impact.init(
+const sequelize = require('../config/connection');
+
+class Project extends Model { }
+
+Project.init(
     {
         id: {
             type: DataTypes.INTEGER,
@@ -12,11 +12,15 @@ Impact.init(
             primaryKey: true,
             autoIncrement: true,
         },
-        desc: {
+        name: {
             type: DataTypes.STRING,
             allowNull: false,
         },
-        outreach: {
+        description: {
+            type: DataTypes.STRING,
+            allowNull: false,
+        },
+        impact_metrics: {
             type: DataTypes.STRING,
             allowNull: false,
         }
@@ -26,8 +30,13 @@ Impact.init(
         timestamps: false,
         freezeTableName: true,
         underscored: true,
-        modelName: 'impact',
-    }
+        modelName: 'project',
+    },
 );
-// Later add more metrics - connect a see more page for impacts
-module.exports = Impact;
+
+Project.getAllProjects = async function () {
+    return await Project.findAll();
+};
+
+module.exports = Project;
+
