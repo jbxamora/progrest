@@ -37,3 +37,5 @@ Donor.init(
         modelName: 'donor',
     },
 );
+
+module.exports = Donor;
