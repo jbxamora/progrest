@@ -77,7 +77,7 @@ router.get('/contact', (req, res) => {
 });
 
 // Use the router in your Express application
-app.use('/', router);
+// app.use('/', router); taken out because of error
 
 
 
