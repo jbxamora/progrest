@@ -42,10 +42,6 @@ Volunteer.init(
   },
 );
 
-<<<<<<< HEAD
-Volunteer.sum('hours').then(sum => {
-  res.render('login',{Hours})
-=======
 // Volunteer.sum('hours').then(sum => {
 //   res.render('portal', { Hours })
 // })
@@ -56,7 +52,6 @@ Volunteer.findAll({
     [sequelize.fn('sum', sequelize.col('hours')), 'totalHours']
   ],
   group: ['project']
->>>>>>> origin
 })
   .then(results => {
     res.render('portal', { results });
@@ -64,7 +59,8 @@ Volunteer.findAll({
 
 
 Volunteer.count().then(count => {
-  res.render('portal', { Volunteers });
+  res.render('login', { Volunteers });
+  console.log(count);
 });
 
 module.exports = Volunteer;
