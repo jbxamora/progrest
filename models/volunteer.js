@@ -59,7 +59,8 @@ Volunteer.findAll({
 
 
 Volunteer.count().then(count => {
-  res.render('portal', { Volunteers });
+  res.render('login', { Volunteers });
+  console.log(count);
 });
 
 module.exports = Volunteer;

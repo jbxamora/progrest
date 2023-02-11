@@ -4,13 +4,13 @@
       "id": 1,
       "name": "John Doe",
       "email": "johndoe@example.com",
-      "hours_worked": 20
+      "hours": 20
     },
     {
       "id": 2,
       "name": "Jane Doe",
       "email": "janedoe@example.com",
-      "hours_worked": 30
+      "hours": 30
     }
   ],
   "project": [
