@@ -44,19 +44,27 @@ Volunteer.init(
 
 // Volunteer.sum('hours').then(sum => {
 //   res.render('portal', { Hours })
+  
 // })
+// const totalAmount = await DONATIONS.findAll({
+//   attributes: [
+//     [sequelize.fn('sum', sequelize.col('hours')), 'total hours'],
+//   ],
+// });
+
+
 
 // Volunteer.findAll({
-//   attributes: [
-//     'project',
-//     [sequelize.fn('sum', sequelize.col('hours')), 'totalHours']
-//   ],
-//   group: ['project']
-// })
-//   .then(results => {
-//     res.render('portal', { results });
-//   });
+//     attributes: {
+//       include: [
+//         [sequelize.fn('COUNT', sequelize.col('volunteer_id')), 'n_vol']
+//       ] 
 
+//     }
+    
+//   }).then((data)=>{
+//     console.log(data);
+//   })
 
 // Volunteer.count().then(count => {
 //   res.render('login', { Volunteers });
