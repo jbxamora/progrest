@@ -13,8 +13,11 @@ Volunteer.init(
       autoIncrement: true,
     },
     project_id: {
-      type: DataTypes.STRING,
-      allowNull: false,
+      type: DataTypes.INTEGER,
+      references: {
+        model: 'project',
+        key: 'id'
+    }
     },
     hours: {
       type: DataTypes.INTEGER,
@@ -36,6 +39,7 @@ Volunteer.init(
     underscored: true,
     modelName: 'volunteer',
   },
+  console.log('volunteer')
 );
 
 // Volunteer.sum('hours').then(sum => {

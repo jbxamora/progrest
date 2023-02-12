@@ -20,6 +20,10 @@ Project.init(
             type: DataTypes.STRING,
             allowNull: false,
         },
+        address: {
+            type: DataTypes.STRING,
+            allowNull: false,
+        },       
         impact_metrics: {
             type: DataTypes.INTEGER,
             allowNull: false,
