@@ -26,10 +26,6 @@ const seedUser = require('./userData');
 const seedAll = async () => {
     await sequelize.sync({ force: true });
     console.log('\n----- DATABASE SYNCED -----\n');
-  
-    await seedVolunteer();
-    console.log('\n----- VOLUNTEERS SEEDED -----\n');
-  
     await seedUser();
     console.log('\n----- USER SEEDED -----\n');
   
@@ -38,7 +34,9 @@ const seedAll = async () => {
   
     await seedDonation();
     console.log('\n----- DONATION SEEDED -----\n');
-  
+    
+    await seedVolunteer();
+    console.log('\n----- VOLUNTEERS SEEDED -----\n');
     process.exit(0);
   };
   

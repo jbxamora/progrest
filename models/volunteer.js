@@ -39,7 +39,7 @@ Volunteer.init(
     underscored: true,
     modelName: 'volunteer',
   },
-  console.log('volunteer')
+ 
 );
 
 // Volunteer.sum('hours').then(sum => {
