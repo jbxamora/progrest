@@ -2,21 +2,18 @@ const { Volunteer } = require('../models');
 
 const volunteerData = [
     {
-        volunteer_id: '1',
-        name: 'Jack',
-        address:"1 Elm St., New York, NY",
+        user_id: 1,
+        project_id: 2,
         hours: 3
     },
     {
-        volunteer_id: '2',
-        name: 'Fred',
-        address:"2 Elm St., New York, NY",
+        user_id: 2,
+        project_id: 3,
         hours: 8
     },
     {
-        volunteer_id: '3',
-        name: 'Jill',
-        address:"3 Elm St., New York, NY",
+        user_id: 3,
+        project_id: 1,
         hours: 9
     }
 ];

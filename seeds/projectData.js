@@ -2,21 +2,24 @@ const { Project } = require('../models');
 
 const projectData = [
     {
-        project_id: '1',
+        user_id: 1,
         project_name: 'HelpMe',
         description:"Helping Me",
+        address:"1 Elm St., New York, NY",
         impact_metrics: "5"
     },
     {
-        project_id: '2',
+        user_id: 2,
         project_name: 'HelpYou',
         description:"Helping You",
+        address:"2 Elm St., New York, NY",
         impact_metrics: "10"
     },
     {
-        project_id: '3',
+        user_id: 3,
         project_name: 'HelpMyself',
         description:"Helping Myself",
+        address:"3 Elm St., New York, NY",
         impact_metrics: "7"
     }
 ];

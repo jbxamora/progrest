@@ -1,23 +1,20 @@
-const { Donor } = require('../models');
+const { Donation } = require('../models');
 
-const donorData = [
+const donationData = [
     {
-        donor_id: '1',
-        donor_name: 'Jack',
-        email:"jack@gmail.com",
-        donation: 20
-    },
-    {
-        donor_id: '2',
-        donor_name: 'Jill',
-        email:"jill@gmail.com",
+        user_id: 1,
+        project_id: 1,
         donation: 100
     },
     {
-        donor_id: '3',
-        donor_name: 'Fred',
-        email:"fred@gmail.com",
-        donation: 700
+        user_id: 5,
+        project_id: 2,
+        donation: 100
+    },
+    {
+        user_id: 4,
+        project_id: 3,
+        donation: 100
     }
 ];
 

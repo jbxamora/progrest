@@ -6,28 +6,28 @@ class Volunteer extends Model { }
 
 Volunteer.init(
   {
-    volunteer_id: {
+    id: {
       type: DataTypes.INTEGER,
       allowNull: false,
       primaryKey: true,
       autoIncrement: true,
     },
-    name: {
-      type: DataTypes.STRING,
-      allowNull: false,
-    },
-    email: {
-      type: DataTypes.STRING,
-      allowNull: false,
-    },
-    project: {
+    project_id: {
       type: DataTypes.STRING,
       allowNull: false,
     },
     hours: {
       type: DataTypes.INTEGER,
       allowNull: false,
-    }
+    },
+    user_id: {
+      type: DataTypes.INTEGER,
+      references: {
+          model: 'user',
+          key: 'id'
+      }
+  }
+
   },
   {
     sequelize,
@@ -42,21 +42,21 @@ Volunteer.init(
 //   res.render('portal', { Hours })
 // })
 
-Volunteer.findAll({
-  attributes: [
-    'project',
-    [sequelize.fn('sum', sequelize.col('hours')), 'totalHours']
-  ],
-  group: ['project']
-})
-  .then(results => {
-    res.render('portal', { results });
-  });
+// Volunteer.findAll({
+//   attributes: [
+//     'project',
+//     [sequelize.fn('sum', sequelize.col('hours')), 'totalHours']
+//   ],
+//   group: ['project']
+// })
+//   .then(results => {
+//     res.render('portal', { results });
+//   });
 
 
-Volunteer.count().then(count => {
-  res.render('login', { Volunteers });
-  console.log(count);
-});
+// Volunteer.count().then(count => {
+//   res.render('login', { Volunteers });
+//   console.log(count);
+// });
 
 module.exports = Volunteer;

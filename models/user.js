@@ -28,13 +28,14 @@ User.init(
             autoIncrement: true
         },
         // define a username column (RZP)
-        name: {
+        username: {
             type: DataTypes.STRING,
             allowNull: false,
             //cannot be more than one username (RZP)
             unique: true
         },
         // define a password column (RZP)
+        
         password: {
             type: DataTypes.STRING,
             allowNull: false,

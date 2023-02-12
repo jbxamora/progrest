@@ -12,26 +12,17 @@ Donation.init(
       primaryKey: true,
       autoIncrement: true,
     },
-    donor_id: {
-      type: DataTypes.STRING,
-      allowNull: false,
-    },
-    date: {
-      type: DataTypes.DATEONLY,
-      allowNull: false,
-    },
-    amount: {
+    donation: {
       type: DataTypes.INTEGER,
       allowNull: false,
     },
-    payment_method: {
-      type: DataTypes.STRING,
-      allowNull: false,
-    },
-    Receipt_sent: {
-      type: DataTypes.BOOLEAN,
-      allowNull: false,
-    }
+    user_id: {
+      type: DataTypes.INTEGER,
+      references: {
+          model: 'user',
+          key: 'id'
+      }
+  }
   },
   {
     sequelize,
