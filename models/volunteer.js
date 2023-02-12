@@ -6,7 +6,7 @@ class Volunteer extends Model { }
 
 Volunteer.init(
   {
-    id: {
+    volunteer_id: {
       type: DataTypes.INTEGER,
       allowNull: false,
       primaryKey: true,
@@ -17,10 +17,6 @@ Volunteer.init(
       allowNull: false,
     },
     email: {
-      type: DataTypes.STRING,
-      allowNull: false,
-    },
-    address: {
       type: DataTypes.STRING,
       allowNull: false,
     },

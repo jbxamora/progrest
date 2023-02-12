@@ -75,7 +75,9 @@ router.get('/projects', (req, res) => {
 router.get('/contact', (req, res) => {
     res.render('contact', {});
 });
-
+router.get('/signup', (req, res) => {
+    res,render('signup', {})
+});
 // Use the router in your Express application
 // app.use('/', router); taken out because of error
 

@@ -6,13 +6,13 @@ class Project extends Model { }
 
 Project.init(
     {
-        id: {
+        project_id: {
             type: DataTypes.INTEGER,
             allowNull: false,
             primaryKey: true,
             autoIncrement: true,
         },
-        name: {
+        project_name: {
             type: DataTypes.STRING,
             allowNull: false,
         },
@@ -21,7 +21,7 @@ Project.init(
             allowNull: false,
         },
         impact_metrics: {
-            type: DataTypes.STRING,
+            type: DataTypes.INTEGER,
             allowNull: false,
         }
     },

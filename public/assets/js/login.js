@@ -21,7 +21,9 @@ const loginFormHandler = async (event) => {
     }
   }
 };
-
+document.getElementById("signup").onclick = function() {
+  location.href='signup.handlebars';
+};
 document
   .querySelector('.login-form')
   .addEventListener('submit', loginFormHandler);
