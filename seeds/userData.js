@@ -4,31 +4,30 @@ const userData =
 
 [
   {
-    username: "Jack",
-    email: "jack@gmail.com",
+    name: "Sal",
+    email: "sal@hotmail.com",
     password: "password12345"
   },
   {
-    username: "Jill",
-    email: "jill@gmail.com",
+    name: "Lernantino",
+    email: "lernantino@gmail.com",
     password: "password12345"
   },
   {
-    username: "Fred",
-    email: "fred@gmail.com",
+    name: "Amiko",
+    email: "amiko2k20@aol.com",
     password: "password12345"
   },
   {
-    username: "Frank",
-    email: "frank@gmail.com",
+    name: "Jordan",
+    email: "jordan99@msn.com",
     password: "password12345"
   },
   {
-    username: "Bruce",
-    email: "bruce@gmail.com",
+    name: "Blake",
+    email: "the_blake@yahoo.com",
     password: "password12345"
   }
-
 ]
 
 const seedUser = () => User.bulkCreate(userData);
