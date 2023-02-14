@@ -1,6 +1,7 @@
 const router = require('express').Router();
-const { User, Project } = require('../models');
+const { User, Volunteer } = require('../models');
 const withAuth = require('../utils/auth');
+const sequelize = require('../config/connection.js');
 
 // Prevent non logged in users from viewing the homepage
 router.get('/', withAuth, async (req, res) => {
@@ -46,9 +47,10 @@ router.get('/portal', async (req, res) => {
       console.log(error);
       res.status(500).json({error: error});
     }
-    
   
   });
+
+  
 router.get('/signup', (req, res) => res.render('signup'))
 router.get('/projects', (req, res) => res.render('projects'));
 router.get('/donation', (req, res) => res.render('donation'));

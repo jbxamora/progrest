@@ -19,24 +19,8 @@ Donation.belongsTo(User, {
     onDelete: 'CASCADE'
 });
 
-Project.belongsTo(User, {
-    foreignKey: 'user_id',
-    onDelete: 'CASCADE'
-});
-
-User.hasMany(Project,{
-    foreignKey: 'user_id',
-});
-
-Volunteer.hasMany(Project, {
-    foreignKey: 'project_id',
-    onDelete: 'CASCADE'
-});
-
-
 module.exports = {
     User,
     Donation,
-    Project,
     Volunteer
 };
