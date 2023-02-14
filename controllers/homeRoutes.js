@@ -72,6 +72,7 @@ router.get('/portal', async (req, res) => {
 router.get('/signup', (req, res) => res.render('signup'))
 router.get('/projects', (req, res) => res.render('projects'));
 router.get('/donation', (req, res) => res.render('donation'));
+router.get('/landing',(req, res) => res.render('landing'));
 
 
 module.exports = router;
