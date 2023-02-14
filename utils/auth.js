@@ -9,7 +9,7 @@ const withAuth = async (req, res, next) => {
     const user = await user.findOne({ where: { email } });
     if (!user) {
       // If the user doesnt exist, throw error
-      res.status(400).json({ message: 'Incorrect email or password' });
+      res.redirect('/login');
     } else {
       // If the user exists, check if the password matches
       const validPassword = await bcrypt.compare(password, user.password);
@@ -18,7 +18,7 @@ const withAuth = async (req, res, next) => {
         next();
       } else {
         // If the password is incorrect, throw error
-        res.status(400).json({ message: 'Incorrect email or password' });
+        res.redirect('/login');
       }
     }
   }
