@@ -1,3 +1,8 @@
+const bcrypt = require('bcrypt');
+const { sequelize } = require('../db/schema.sql');
+const User = require('../models/user/')(sequelize, Sequelize);
+
+
 const withAuth = async (req, res, next) => {
   // If the user is not logged in, redirect the request to the login route
   if (!req.session.logged_in) {
