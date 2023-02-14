@@ -35,14 +35,12 @@ router.get('/login', (req, res) => {
 router.get('/portal', async (req, res) => {
     try {
       console.log(req.session.user_id);
-      let userData = await User.findByPk(req.session.user_id,{
-        include: [{model: Project}]
-      }); 
+      let userData = await User.findByPk(req.session.user_id); 
   
-      const user = userData.get({plain: true})
-      console.log(user)
+      const users = userData.get({plain: true});
+      console.log(users.project_name, users)
       res.render('portal', {
-        user
+        users
       });
     } catch (error) {
       console.log(error);
