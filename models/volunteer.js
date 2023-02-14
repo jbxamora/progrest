@@ -12,26 +12,25 @@ Volunteer.init(
       primaryKey: true,
       autoIncrement: true,
     },
-    name: {
-      type: DataTypes.STRING,
-      allowNull: false,
-    },
-    email: {
-      type: DataTypes.STRING,
-      allowNull: false,
-    },
-    address: {
-      type: DataTypes.STRING,
-      allowNull: false,
-    },
-    project: {
-      type: DataTypes.STRING,
-      allowNull: false,
+    project_id: {
+      type: DataTypes.INTEGER,
+      references: {
+        model: 'project',
+        key: 'id'
+    }
     },
     hours: {
       type: DataTypes.INTEGER,
       allowNull: false,
-    }
+    },
+    user_id: {
+      type: DataTypes.INTEGER,
+      references: {
+          model: 'user',
+          key: 'id'
+      }
+  }
+
   },
   {
     sequelize,
@@ -40,27 +39,36 @@ Volunteer.init(
     underscored: true,
     modelName: 'volunteer',
   },
+ 
 );
 
 // Volunteer.sum('hours').then(sum => {
 //   res.render('portal', { Hours })
+  
 // })
-
-Volunteer.findAll({
-  attributes: [
-    'project',
-    [sequelize.fn('sum', sequelize.col('hours')), 'totalHours']
-  ],
-  group: ['project']
-})
-  .then(results => {
-    res.render('portal', { results });
-  });
+// const totalAmount = await DONATIONS.findAll({
+//   attributes: [
+//     [sequelize.fn('sum', sequelize.col('hours')), 'total hours'],
+//   ],
+// });
 
 
-Volunteer.count().then(count => {
-  res.render('login', { Volunteers });
-  console.log(count);
-});
+
+// Volunteer.findAll({
+//     attributes: {
+//       include: [
+//         [sequelize.fn('COUNT', sequelize.col('volunteer_id')), 'n_vol']
+//       ] 
+
+//     }
+    
+//   }).then((data)=>{
+//     console.log(data);
+//   })
+
+// Volunteer.count().then(count => {
+//   res.render('login', { Volunteers });
+//   console.log(count);
+// });
 
 module.exports = Volunteer;

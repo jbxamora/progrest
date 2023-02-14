@@ -12,7 +12,7 @@ Project.init(
             primaryKey: true,
             autoIncrement: true,
         },
-        name: {
+        project_name: {
             type: DataTypes.STRING,
             allowNull: false,
         },
@@ -20,9 +20,20 @@ Project.init(
             type: DataTypes.STRING,
             allowNull: false,
         },
-        impact_metrics: {
+        address: {
             type: DataTypes.STRING,
             allowNull: false,
+        },       
+        impact_metrics: {
+            type: DataTypes.INTEGER,
+            allowNull: false,
+        },
+        user_id: {
+            type: DataTypes.INTEGER,
+            references: {
+                model: 'user',
+                key: 'id'
+            }
         }
     },
     {

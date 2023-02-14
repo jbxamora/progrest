@@ -6,14 +6,14 @@ class Donor extends Model { }
 
 Donor.init(
     {
-        id: {
+        donor_id: {
             type: DataTypes.INTEGER,
             allowNull: false,
             primaryKey: true,
             autoIncrement: true,
         },
 
-        name: {
+        donor_name: {
             type: DataTypes.STRING,
             allowNull: false,
         },
@@ -24,8 +24,8 @@ Donor.init(
             validate,
             isEmail: true,
         },
-        payment_info: {
-            type: DataTypes.STRING,
+        donation: {
+            type: DataTypes.INTEGER,
             allowNull: false,
         },
     },
@@ -37,3 +37,5 @@ Donor.init(
         modelName: 'donor',
     },
 );
+
+module.exports = Donor;
