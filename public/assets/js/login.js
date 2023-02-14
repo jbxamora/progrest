@@ -12,10 +12,9 @@ const loginFormHandler = async (event) => {
       method: 'POST',
       body: JSON.stringify({ email, password }),
       headers: { 'Content-Type': 'application/json' },
-    });
+    });console.log(response);
 
     if (response.ok) {
-      console.log('Welcome' + email)
       document.location.replace('/portal');
     } else {
       alert('Failed to log in');
@@ -24,9 +23,9 @@ const loginFormHandler = async (event) => {
 };
 
 
-document.getElementById("signup").onclick = function() {
-  location.href='/signup';
-};
+// document.getElementById("signup").onclick = function() {
+//   location.href='/signup';
+// };
 document
   .querySelector('.login-form')
   .addEventListener('submit', loginFormHandler);

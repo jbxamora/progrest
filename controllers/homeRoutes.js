@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { User, Volunteer } = require('../models');
+const { User, Volunteer, Project } = require('../models');
 const withAuth = require('../utils/auth');
 const sequelize = require('../config/connection.js');
 
@@ -23,14 +23,14 @@ router.get('/login', (req, res) => {
   }
   res.render('login');
 });
- router.post('/login', (req, res) => {
-    // Verify the user's credentials
+//  router.post('/login', (req, res) => {
+//     // Verify the user's credentials
 
-    // If the credentials are valid, set the `loggedIn` property in the session to `true`
-    req.session.loggedIn = true;
-    // Redirect the user to the portal page
-    res.redirect('/portal');
-});
+//     // If the credentials are valid, set the `loggedIn` property in the session to `true`
+//     req.session.loggedIn = true;
+//     // Redirect the user to the portal page
+//     res.redirect('/portal');
+// });
 
 router.get('/volunteer', async (req, res) => {
   try{
@@ -38,14 +38,40 @@ router.get('/volunteer', async (req, res) => {
     attributes:[[sequelize.fn('SUM', sequelize.col('hours')), 'total_hours']]})
     // .then(hours =>{
       // let volunteer.dataValues.total_hours.hours = hours
-      console.log(hoursData),
-      res.render('volunteer', hoursData);
+      let hours = hoursData.map(hour => hour.get({plain:true}));
+      console.log(hours),
+      res.render('volunteer', {
+        hours
+      });
       // res.sendStatus(200);
     // });
   }catch(err) { console.error(err);
   }
 });
 
+router.get('/portal', async (req, res) => {
+  try {
+    console.log(req.session.user_id);
+    let userData = await User.findByPk(req.session.user_id,{
+      include: [{model: Project}]
+    }); 
+    console.log(userData)
+
+    const user = userData.get({plain: true})
+    console.log(user)
+    res.render('portal', {
+      user
+    });
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({error: error});
+  }
+  
+
+});
+router.get('/signup', (req, res) => res.render('signup'))
+router.get('/projects', (req, res) => res.render('projects'));
+router.get('/donation', (req, res) => res.render('donation'));
 
 
 module.exports = router;

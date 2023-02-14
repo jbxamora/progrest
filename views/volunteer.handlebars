@@ -1,3 +1,6 @@
     {{>loginbutton}}
 
-    <h5>{{hoursData}}</h5>
+    <h5>hours</h5>
+    {{#each hours as |hour|}}
+    {{hour.total_hours}}
+    {{/each}}
