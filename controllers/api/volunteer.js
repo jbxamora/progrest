@@ -127,5 +127,30 @@ router.delete('/:id', withAuth, (req, res) => {
         res.status(500).json(err);
       });
 });
+router.get('/portal', (req, res) => {
+  // Check if the user is logged in
+  if (req.session.loggedIn) {
+      // If the user is logged in, render the portal page
+      res.render('portal', {});
+  } else {
+      // If the user is not logged in, redirect them to the login page
+      res.redirect('/login');
+  }
+});
+router.get('/volunteer', async (req, res) => res.render('volunteer'))
+
+router.post('/volunteer', async (req, res) => {
+  try{
+    let hoursData = await Volunteer.findAll({
+    attributes:[[sequelize.fn('SUM', sequelize.col('hours')), 'total_hours']]})
+    // .then(hours =>{
+      // let volunteer.dataValues.total_hours.hours = hours
+      console.log(hoursData),
+      res.render('volunteer', hoursData);
+      // res.sendStatus(200);
+    // });
+  }catch(err) { console.error(err);
+  }
+});
 
 module.exports = router;

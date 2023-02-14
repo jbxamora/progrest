@@ -9,6 +9,10 @@ Volunteer.hasMany(User,{
 
 });
 
+User.belongsToMany(Volunteer),{
+    foreignKey: 'user_id',
+}
+
 Donation.belongsTo(User, {
     foreignKey: 'user_id',
     onDelete: 'CASCADE'

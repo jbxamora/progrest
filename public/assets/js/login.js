@@ -15,12 +15,15 @@ const loginFormHandler = async (event) => {
     });
 
     if (response.ok) {
+      console.log('Welcome' + email)
       document.location.replace('/portal');
     } else {
       alert('Failed to log in');
     }
   }
 };
+
+
 document.getElementById("signup").onclick = function() {
   location.href='/signup';
 };
