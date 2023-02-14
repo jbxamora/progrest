@@ -10,7 +10,8 @@ const mysql = require('mysql');
 const jawsdbUrl = process.env.JAWSDB_URL;
 
 // Create a MySQL connection pool using the JawsDB URL
-const pool = mysql.createPool(jawsdbUrl);
+// const pool = mysql.createPool(jawsdbUrl);
+//Deactivated (RZP 2/14/23)
 const sequelize = require('./config/connection');
 
 // Create a new sequelize store using the express-session package
@@ -24,13 +25,14 @@ const hbs = exphbs.create({ helpers });
 
 
 
-// Define a route that queries the database
-app.get('/', (req, res) => {
-  pool.query('SELECT * FROM my_table', (error, results, fields) => {
-    if (error) throw error;
-    res.send(results);
-  });
-});
+// Define a route that queries the database]
+//Deactivated (RZP 2/14/23)
+// app.get('/', (req, res) => {
+//   pool.query('SELECT * FROM my_table', (error, results, fields) => {
+//     if (error) throw error;
+//     res.send(results);
+//   });
+// });
 
 
 
