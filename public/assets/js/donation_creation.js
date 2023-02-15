@@ -26,4 +26,6 @@ async function signupFormHandler() {
 
 }
 
-document.querySelector('.signup-form').addEventListener('submit', signupFormHandler);
+document.getElementById("signup-form").onclick = function() {
+    location.href='/portal';
+  };

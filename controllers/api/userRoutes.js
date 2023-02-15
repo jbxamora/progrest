@@ -53,22 +53,23 @@ router.post('/logout', (req, res) => {
 router.get('/donation', (req, res) => res.render('donation'));
 
 // handle POST request to sign up a new user
-router.post('/donation', async(req, res) => {
+router.post('/donation',(req, res) => {
   User.create({
     name: req.body.name,
     email: req.body.email,
     password: req.body.password,
     project_name: req.body.project_name
-})
+    
+  })
 .then(userData => {
     req.session.save(() => {
         req.session.user_id = userData.id;
         req.session.username = userData.username;
-        req.session.project_name = userData.project_name;;
+        req.session.project_name = userData.project_name;
         req.session.loggedIn = true;
         res.json(userData);
         res.redirect('/portal')
-    });
+    }); console.log(req.body.project_name)
 })
 .catch(err => {
     console.log(err);
