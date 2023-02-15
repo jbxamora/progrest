@@ -1,5 +1,6 @@
 const router = require('express').Router();
 const { User } = require('../../models');
+const bodyParser = require('body-parser');
 
 router.post('/login', async (req, res) => {
   try {
@@ -47,6 +48,32 @@ router.post('/logout', (req, res) => {
   }
 });
 
+app.use(bodyParser.urlencoded({ extended: false }));
+
+// handle GET request for the sign-up form
+app.get('/signup', (req, res) => {
+  res.sendFile(__dirname + '/donation.html');
+});
+
+// handle POST request to sign up a new user
+app.post('/donation', async (req, res) => {
+  const { name, email, password } = req.body;
+
+  try {
+    // create a new user record in the database
+    const user = await User.create({
+      name,
+      email,
+      password
+    });
+    // send a success response back to the client
+    res.send(`User ${user.name} created successfully!`);
+  } catch (err) {
+    console.error(err);
+    // send an error response back to the client
+    res.status(500).send('An error occurred while creating the user');
+  }
+});
 module.exports = router;
 
 
@@ -164,4 +191,4 @@ module.exports = router;
 // router.get('/portal')
 
 
-module.exports = router;
+// module.exports = router;

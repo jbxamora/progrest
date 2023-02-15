@@ -12,13 +12,12 @@ User.belongsTo(Volunteer,{
 
 });
 
-Donation.belongsTo(User, {
-    foreignKey: 'user_id',
-    onDelete: 'CASCADE'
-});
+// Donation.belongsTo(User, {
+//     foreignKey: 'user_id',
+//     onDelete: 'CASCADE'
+// });
 
 module.exports = {
     User,
-    Donation,
     Volunteer
 };
