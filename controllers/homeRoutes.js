@@ -12,10 +12,9 @@ router.get('/', withAuth, async (req, res) => {
     });
 
     const users = userData.map((project) => project.get({ plain: true }));
-
+      console.log(users)
     res.render('portal', {
       users,
-      // Pass the logged in flag to the template
       logged_in: req.session.logged_in,
     });
   } catch (err) {
@@ -32,26 +31,6 @@ router.get('/login', (req, res) => {
 
   res.render('login');
 });
-
-router.get('/portal', async (req, res) => {
-    try {
-      console.log(req.session.user_id);
-      let userData = await User.findByPk(req.session.user_id); 
-  
-      const users = userData.get({plain: true});
-      console.log(users)
-      res.render('portal', {
-        users
-      });
-    } catch (error) {
-      console.log(error);
-      res.status(500).json({error: error});
-    }
-  
-  });
-
-  // handle GET request for the sign-up form
-router.get('/donation', (req, res) => res.render('donation'));
 
 // handle POST request to sign up a new user
 router.post('/donation',(req, res) => {
@@ -79,9 +58,26 @@ router.post('/donation',(req, res) => {
     res.status(500).json(err);
 });
 });
+//Get user and add project to template
+router.get('/portal', async (req, res) => {
+    try {
+      console.log(req.session.user_id);
+      let userData = await User.findByPk(req.session.user_id); 
   
+      const users = userData.get({plain: true});
+      console.log(users)
+      res.render('portal', {
+        users
+      });
+    } catch (error) {
+      console.log(error);
+      res.status(500).json({error: error});
+    }
   
-
+  });
+  
+//Be able to go to these pages
+router.get('/donation', (req, res) => res.render('donation'));
 router.get('/projects', (req, res) => res.render('projects'));
 router.get('/donation', (req, res) => res.render('donation'));
 router.get('/landing',(req, res) => res.render('landing'));

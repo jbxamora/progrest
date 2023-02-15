@@ -57,50 +57,27 @@ router.get('/', (req, res) =>
 // handle GET request for the sign-up form
 router.get('/donation', (req, res) => res.render('donation'));
 
-// handle POST request to sign up a new user
-router.post('/donation',(req, res) => {
-  User.create({
-    name: req.body.name,
-    email: req.body.email,
-    project_name: req.body.project_name,
-    password: req.body.password,
-    
-    
+// delete by user_id
+router.delete('/:id', (req, res) => {
+  User.destroy({
+    where: {
+      id: req.params.id
+    }
   })
-.then(userData => {
-    req.session.save(() => {
-        // req.session.user_id = userData.id;
-        req.session.name = userData.name;
-        req.session.email = userData.email;
-        req.session.project_name = userData.project_name;
-        req.session.loggedIn = true;
-        res.json(userData);
-        // res.redirect('/portal')
-    }); 
-})
-.catch(err => {
-    console.log(err);
-    res.status(500).json(err);
+    .then(dbPostData => {
+      if (!dbPostData) {
+        res.status(404).json({ message: 'No post found with this id' });
+        return;
+      }
+      res.json(dbPostData);
+    })
+    .catch(err => {
+      console.log(err);
+      res.status(500).json(err);
+    });
 });
-});
-  // User.create({
-  //     name: req.body.name,
-  //     email: req.body.email,
-  //     password: req.body.password,
-  //   })
-    // send a success response back to the client
-    
 
 
-    
-    // .then(res.send(`User ${user.name} created successfully!`)
-    // ) 
-    // .catch(err => {
-    // console.error(err);
-    // send an error response back to the client
-//     res.status(500).send('An error occurred while creating the user');
-//   })
-// });
 module.exports = router;
 
 

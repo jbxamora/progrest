@@ -11,9 +11,10 @@ async function signupFormHandler(event) {
             method: 'POST',
             body: JSON.stringify({
                 name,
+                email,
                 password,
-                project_name,
-                email
+                project_name
+                
             }),
             headers: { 'Content-Type': 'application/json' }
         });
@@ -21,7 +22,7 @@ async function signupFormHandler(event) {
         //check response status
         if (response.ok) {
             console.log(response)
-            document.location.replace('/landing');
+            document.location.replace('/portal');
         } else {
             alert("Make sure all information is entered.");
         }
