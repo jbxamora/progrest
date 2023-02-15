@@ -1,5 +1,6 @@
 const Sequelize = require('sequelize');
 require('dotenv').config();
+const pool = mysql.createPool(jawsdbUrl);
 
 let sequelize;
 
