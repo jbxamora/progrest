@@ -48,6 +48,11 @@ router.post('/logout', (req, res) => {
   }
 });
 
+router.get('/', (req, res) => 
+  User.findAll()
+    .then(users => res.json(users))
+    .catch(err => res.json(err)));
+
 
 // handle GET request for the sign-up form
 router.get('/donation', (req, res) => res.render('donation'));
@@ -57,19 +62,21 @@ router.post('/donation',(req, res) => {
   User.create({
     name: req.body.name,
     email: req.body.email,
+    project_name: req.body.project_name,
     password: req.body.password,
-    project_name: req.body.project_name
+    
     
   })
 .then(userData => {
     req.session.save(() => {
-        req.session.user_id = userData.id;
-        req.session.username = userData.username;
+        // req.session.user_id = userData.id;
+        req.session.name = userData.name;
+        req.session.email = userData.email;
         req.session.project_name = userData.project_name;
         req.session.loggedIn = true;
         res.json(userData);
-        res.redirect('/portal')
-    }); console.log(req.body.project_name)
+        // res.redirect('/portal')
+    }); 
 })
 .catch(err => {
     console.log(err);

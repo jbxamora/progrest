@@ -1,16 +1,19 @@
-async function signupFormHandler() {
-    // event.preventDefautl();
-    const username = document.querySelector('#name-signup').value.trim();
+async function signupFormHandler(event) {
+    event.preventDefault();
+    const name = document.querySelector('#name-signup').value.trim();
     const password = document.querySelector('#password-signup').value.trim();
-    const project_name = document.querySelector('#project_name').value
+    const project_name = document.querySelector('#project_name').value;
+    const email = document.querySelector('#email-signup').value.trim();
 
-    if (username && password && project_name) {
-        const response = await fetch('/api/users', {
+
+    if (name && password && project_name && email) {
+        const response = await fetch('/donation', {
             method: 'POST',
             body: JSON.stringify({
-                username,
+                name,
                 password,
                 project_name,
+                email
             }),
             headers: { 'Content-Type': 'application/json' }
         });
@@ -18,7 +21,7 @@ async function signupFormHandler() {
         //check response status
         if (response.ok) {
             console.log(response)
-            document.location.replace('/portal');
+            document.location.replace('/landing');
         } else {
             alert("Make sure all information is entered.");
         }
@@ -26,6 +29,4 @@ async function signupFormHandler() {
 
 }
 
-document.getElementById("signup-form").onclick = function() {
-    location.href='/portal';
-  };
+document.getElementById("signup-form").addEventListener("submit",signupFormHandler);
