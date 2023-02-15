@@ -21,8 +21,10 @@ async function signupFormHandler(event) {
 
         //check response status
         if (response.ok) {
+            
             console.log(response)
-            document.location.replace('/portal');
+            document.location.replace('/login');
+            alert("Your account has been created/ please use your email and login in the login page")
         } else {
             alert("Make sure all information is entered.");
         }

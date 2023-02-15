@@ -33,17 +33,10 @@ router.get('/login', (req, res) => {
 });
 
 // handle POST request to sign up a new user
-router.post('/donation',(req, res) => {
-  User.create({
-    name: req.body.name,
-    email: req.body.email,
-    project_name: req.body.project_name,
-    password: req.body.password,
-    
-    
-  })
-.then(userData => {
-    req.session.save(() => {
+router.post('/donation',async (req, res) => {
+  try {
+    const userData = await User.create(req.body);
+      req.session.save(() => {
         // req.session.user_id = userData.id;
         req.session.name = userData.name;
         req.session.email = userData.email;
@@ -51,12 +44,10 @@ router.post('/donation',(req, res) => {
         req.session.loggedIn = true;
         res.json(userData);
         // res.redirect('/portal')
-    }); 
-})
-.catch(err => {
-    console.log(err);
-    res.status(500).json(err);
-});
+  });
+}    catch (err) {
+  res.status(400).json(err);
+}
 });
 //Get user and add project to template
 router.get('/portal', async (req, res) => {
