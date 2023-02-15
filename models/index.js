@@ -1,4 +1,4 @@
-const User = require('./User');
+const User = require('./user');
 // const Donor = require('./Donor');
 const Project = require('./Project');
 const Volunteer = require('./Volunteer');

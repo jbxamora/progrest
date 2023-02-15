@@ -1,5 +1,5 @@
 {
-  "name": "user-list",
+  "name": "progrest",
   "version": "1.0.0",
   "description": "",
   "main": "server.js",
@@ -12,7 +12,9 @@
     "bcrypt": "^5.1.0",
     "connect-session-sequelize": "^7.1.5",
     "cookies": "^0.8.0",
+    "dotenv": "^16.0.3",
     "express": "^4.18.2",
+    "express-handlebars": "^6.0.7",
     "express-session": "^1.17.3",
     "fs": "^0.0.1-security",
     "handlebars": "^4.7.7",
