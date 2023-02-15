@@ -1,7 +1,7 @@
 const router = require('express').Router();
 const { User } = require('../../models');
 
-router.get('/signup', (req, res) => res.render('signup'))
+router.get('/donation', (req, res) => res.render('donation'));
 
 router.post("/signup", (req,res) => {
     User.create({
