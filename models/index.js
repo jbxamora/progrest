@@ -1,8 +1,6 @@
 const User = require('./user');
-// const Donor = require('./Donor');
-const Project = require('./Project');
-const Volunteer = require('./Volunteer');
-const Donation = require('./Donation');
+const Project = require('./project');
+const Volunteer = require('./volunteer');
 
 Volunteer.hasMany(User,{
     foreignKey: 'user_id',
@@ -14,13 +12,12 @@ User.belongsTo(Volunteer,{
 
 });
 
-Donation.belongsTo(User, {
-    foreignKey: 'user_id',
-    onDelete: 'CASCADE'
-});
+// Donation.belongsTo(User, {
+//     foreignKey: 'user_id',
+//     onDelete: 'CASCADE'
+// });
 
 module.exports = {
     User,
-    Donation,
     Volunteer
 };
