@@ -15,6 +15,7 @@ const loginFormHandler = async (event) => {
     });console.log(response);
 
     if (response.ok) {
+      // If successful, redirect the browser to the portal page
       document.location.replace('/portal');
     } else {
       alert('Failed to log in');
@@ -23,9 +24,9 @@ const loginFormHandler = async (event) => {
 };
 
 
-// document.getElementById("signup").onclick = function() {
-//   location.href='/signup';
-// };
+document.getElementById("signup").onclick = function() {
+  location.href='/donation';
+};
 document
   .querySelector('.login-form')
   .addEventListener('submit', loginFormHandler);

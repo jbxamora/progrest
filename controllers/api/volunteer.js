@@ -1,6 +1,6 @@
 //route for volunteers
 const router = require('express').Router();
-const { Volunteer, User } = require('../../models/volunteer');
+const { Volunteer } = require('../../models/Volunteer');
 const withAuth = require('../../utils/auth');
 
 // get all volunteers
