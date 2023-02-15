@@ -66,7 +66,14 @@ app.post('/donation', async (req, res) => {
       email,
       password
     });
-
+    // send a success response back to the client
+    res.send(`User ${user.name} created successfully!`);
+  } catch (err) {
+    console.error(err);
+    // send an error response back to the client
+    res.status(500).send('An error occurred while creating the user');
+  }
+});
 module.exports = router;
 
 
