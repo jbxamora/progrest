@@ -5,13 +5,10 @@ const exphbs = require('express-handlebars');
 const routes = require('./controllers');
 const helpers = require('./utils/helpers');
 const mysql = require('mysql');
-
 // Retrieve the JawsDB URL from the environment
 const jawsdbUrl = process.env.JAWSDB_URL;
 
-// Create a MySQL connection pool using the JawsDB URL
-// const pool = mysql.createPool(jawsdbUrl);
-//Deactivated (RZP 2/14/23)
+
 const sequelize = require('./config/connection');
 
 // Create a new sequelize store using the express-session package
