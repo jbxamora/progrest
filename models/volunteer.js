@@ -12,13 +12,6 @@ Volunteer.init(
       primaryKey: true,
       autoIncrement: true,
     },
-    project_id: {
-      type: DataTypes.INTEGER,
-      references: {
-        model: 'project',
-        key: 'id'
-    }
-    },
     hours: {
       type: DataTypes.INTEGER,
       allowNull: false,

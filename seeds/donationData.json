@@ -1,0 +1,15 @@
+[
+    {
+        "user_id": 1,
+        "donation": 100
+    },
+    {
+        "user_id": 5,
+        "donation": 100
+    },
+    {
+        "user_id": 4,
+        "donation": 100
+    }
+]
+
