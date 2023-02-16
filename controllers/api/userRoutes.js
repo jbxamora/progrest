@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { User, Volunteer} = require('../../models');
+const { User, Volunteer } = require('../../models');
 // const bodyParser = require('body-parser');
 
 router.post('/login', async (req, res) => {
@@ -28,7 +28,7 @@ router.post('/login', async (req, res) => {
     req.session.save(() => {
       req.session.user_id = userData.id;
       req.session.logged_in = true;
-      
+
       res.json({ user: userData, message: 'You are now logged in!' });
     });
 
@@ -48,7 +48,7 @@ router.post('/logout', (req, res) => {
   }
 });
 
-router.get('/', (req, res) => 
+router.get('/', (req, res) =>
   User.findAll()
     .then(users => res.json(users))
     .catch(err => res.json(err)));
@@ -112,7 +112,7 @@ router.get('/hours', async (req, res) => {
         },
       ],
     });
-    
+
     // Serialize data so the template can read it
     const users = userData.map((user) => user.get({ plain: true }));
     console.log(users);

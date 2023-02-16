@@ -3,7 +3,7 @@ const Volunteer = require('./volunteer');
 const Donation = require('./donation');
 
 //volunteer hours attached to the user
-Volunteer.belongsTo(User,{
+Volunteer.belongsTo(User, {
     foreignKey: 'user_id',
 
 });

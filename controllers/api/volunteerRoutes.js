@@ -34,7 +34,7 @@ router.get('/hours', async (req, res) => {
 
 
 
-// Come back to this to add hou
+// Come back to this to add hours
 // router.post('/volunteer/total', async (req, res) => {
 //   try{
 //     let hoursData = await Volunteer.findAll({
