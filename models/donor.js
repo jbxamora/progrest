@@ -3,7 +3,7 @@ const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
 
 class Donor extends Model { }
-
+//Donor to worked with in the future
 Donor.init(
     {
         donor_id: {

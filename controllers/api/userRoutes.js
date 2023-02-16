@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { User, Volunteer } = require('../../models');
+const { User, Volunteer} = require('../../models');
 // const bodyParser = require('body-parser');
 
 router.post('/login', async (req, res) => {
@@ -76,6 +76,31 @@ router.delete('/:id', (req, res) => {
       res.status(500).json(err);
     });
 });
+
+// find one user by www.website.com/api/users/1
+router.get('/:id', (req, res) => {
+  User.findOne({
+    where: {
+      id: req.params.id
+    }
+  })
+    .then(dbPostData => {
+      if (!dbPostData) {
+        res.status(404).json({ message: 'No post found with this id' });
+        return;
+      }
+      res.json(dbPostData);
+    })
+    .catch(err => {
+      console.log(err);
+      res.status(500).json(err);
+    });
+});
+
+
+
+
+// find hours through users by www.website.com/api/users/hours
 router.get('/hours', async (req, res) => {
   try {
     // Get all projects and JOIN with user data

@@ -23,7 +23,7 @@ const loginFormHandler = async (event) => {
   }
 };
 
-
+//click on button directs to donation
 document.getElementById("signup").onclick = function() {
   location.href='/donation';
 };

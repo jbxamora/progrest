@@ -1,9 +1,10 @@
 const Sequelize = require('sequelize');
+//needed to use .env to connect 
 require('dotenv').config();
-// const pool = mysql.createPool(jawsdbUrl);
+
 
 let sequelize;
-
+//connection using JAWSDB's env
 if (process.env.JAWSDB_URL) {
   sequelize = new Sequelize(process.env.JAWSDB_URL);
 } else {
