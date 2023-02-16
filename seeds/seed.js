@@ -9,26 +9,26 @@ const seedDatabase = async () => {
   await sequelize.sync({ force: true });
   console.log('\n----- DATABASE SYNCED -----\n');
 
-  const users = await User.bulkCreate(userData, {
+  await User.bulkCreate(userData, {
     individualHooks: true,
     returning: true,
   });
   console.log('\n----- USER SEEDED -----\n');
   
-  for(const volunteer of volunteerData){
+ 
   await Volunteer.create({
-      ...volunteer,
-      user_id: users[Math.floor(Math.random() * users.length)].id,
+    individualHooks: true,
+    returning: true,
   });
-}
+
   console.log('\n----- VOLUNTEER SEEDED -----\n');
   
-  for(const donation of donationData){
-    await Donation.create({
-        ...donation,
-        user_id: users[Math.floor(Math.random() * users.length)].id,
+
+    Donation.create({
+      individualHooks: true,
+      returning: true,
     });
-  }
+  
   console.log('\n----- DONATION SEEDED -----\n');
   
   
