@@ -50,7 +50,7 @@ router.post('/donation',async (req, res) => {
 }
 });
 //Get user and add project to template
-router.get('/portal', async (req, res) => {
+router.get('/', async (req, res) => {
     try {
       console.log(req.session.user_id);
       let userData = await User.findByPk(req.session.user_id); 
@@ -66,7 +66,7 @@ router.get('/portal', async (req, res) => {
     }
   
   });
-  
+
 //Be able to go to these pages
 router.get('/donation', (req, res) => res.render('donation'));
 router.get('/projects', (req, res) => res.render('projects'));
