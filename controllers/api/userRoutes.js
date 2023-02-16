@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { User, Volunteer } = require('../../models');
+const { User, Volunteer} = require('../../models');
 // const bodyParser = require('body-parser');
 
 router.post('/login', async (req, res) => {
