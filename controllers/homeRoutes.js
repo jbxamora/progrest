@@ -50,13 +50,13 @@ router.post('/donation',async (req, res) => {
 }
 });
 //Get user and add project to template
-router.get('/', async (req, res) => {
+router.get('/portal', async (req, res) => {
     try {
       console.log(req.session.user_id);
       let userData = await User.findByPk(req.session.user_id); 
   
       const users = userData.get({plain: true});
-      console.log(users)
+      
       res.render('portal', {
         users
       });
