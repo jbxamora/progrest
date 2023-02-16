@@ -1,26 +1,74 @@
 //route for volunteers
 const router = require('express').Router();
-const { Volunteer, User } = require('../../models/volunteer');
+const { Volunteer, User } = require('../../models');
 const withAuth = require('../../utils/auth');
 
-// get all volunteers
-router.get('/', (req, res) => {
-    Volunteer.findAll({
-        attributes: [
-            'id',
-            'volunteer_name',
-            'organization',
-            'hours',
-
-        ]
-        
-    })
-    .then(dbPostData => res.json(dbPostData))
-    .catch(err => {
-      console.log(err);
-      res.status(500).json(err);
+router.get('/', async (req, res) => {
+  try {
+    // Get all projects and JOIN with user data
+    const volunteerData = await Volunteer.findAll({
+      include: [
+        {
+          model: User,
+          attributes: ['name', 'project_name']
+        },
+      ],
     });
+    console.log(volunteerData);
+    // Serialize data so the template can read it
+    const volunteers = volunteerData.map((volunteer) => volunteer.get({ plain: true }));
+
+    // Pass serialized data and session flag into template
+    res.send(volunteers);
+  } catch (err) {
+    res.status(500).json(err);
+  }
 });
+
+// get all volunteers
+// router.get('/', async (req, res) => {
+//   try {
+//     // Get all projects and JOIN with user data
+//     const volunteerData = await Volunteer.findAll({
+//       include: [
+//         {
+//           model: User,
+//           attributes: ['name', 'project_name']
+//         },
+//       ],
+//     });
+    
+
+//     // Serialize data so the template can read it
+//     const volunteers = volunteerData.map((volunteer) => volunteer.get({ plain: true }));
+
+//     // Pass serialized data and session flag into template
+//     res.send(volunteers);
+//   } catch (err) {
+//     res.status(500).json(err);
+//   }
+// });
+
+// router.get('/', async (req, res) => {
+//   try{
+//     const volunteerData = await Volunteer.findAll({
+//       include: [
+//         {
+//           model: User,
+//           attributes: ['name', 'project']
+//         }
+//       ]
+//     }));
+//   }
+//     const volunteers = volunteerData.map((volunteer) => volunteer.get({plain: true}));
+//     res.json(volunteers);
+//   }catch(err){ res.status(500).json(err);
+// })
+
+
+
+
+
 
 // get all volunteers by organization
 router.get('/:organization', (req, res) => {
@@ -127,17 +175,8 @@ router.delete('/:id', withAuth, (req, res) => {
         res.status(500).json(err);
       });
 });
-router.get('/portal', (req, res) => {
-  // Check if the user is logged in
-  if (req.session.loggedIn) {
-      // If the user is logged in, render the portal page
-      res.render('portal', {});
-  } else {
-      // If the user is not logged in, redirect them to the login page
-      res.redirect('/login');
-  }
-});
-router.get('/volunteer', async (req, res) => res.render('volunteer'))
+
+
 
 router.post('/volunteer', async (req, res) => {
   try{
