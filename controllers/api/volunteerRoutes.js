@@ -3,7 +3,7 @@ const router = require('express').Router();
 const { Volunteer, User } = require('../../models');
 const withAuth = require('../../utils/auth');
 //GET hours connected to user_id
-router.get('/', (req, res) => 
+router.get('/', (req, res) =>
   Volunteer.findAll()
     .then(volunteer => res.json(volunteer))
     .catch(err => res.json(err)));
@@ -34,7 +34,7 @@ router.get('/hours', async (req, res) => {
 
 
 
-
+// Come back to this to add hours
 // router.post('/volunteer/total', async (req, res) => {
 //   try{
 //     let hoursData = await Volunteer.findAll({

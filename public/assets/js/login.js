@@ -12,7 +12,7 @@ const loginFormHandler = async (event) => {
       method: 'POST',
       body: JSON.stringify({ email, password }),
       headers: { 'Content-Type': 'application/json' },
-    });console.log(response);
+    }); console.log(response);
 
     if (response.ok) {
       // If successful, redirect the browser to the portal page
@@ -24,12 +24,11 @@ const loginFormHandler = async (event) => {
 };
 
 //click on button directs to donation
-document.getElementById("signup").onclick = function() {
-  location.href='/donation';
+document.getElementById("signup").onclick = function () {
+  location.href = '/donation';
 };
 document
   .querySelector('.login-form')
   .addEventListener('submit', loginFormHandler);
 
 
-  

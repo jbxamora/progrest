@@ -12,7 +12,7 @@ router.get('/', withAuth, async (req, res) => {
     });
 
     const users = userData.map((project) => project.get({ plain: true }));
-      console.log(users)
+    console.log(users)
     res.render('portal', {
       users,
       logged_in: req.session.logged_in,
@@ -33,46 +33,46 @@ router.get('/login', (req, res) => {
 });
 
 // handle POST request to sign up a new user
-router.post('/donation',async (req, res) => {
+router.post('/donation', async (req, res) => {
   try {
     const userData = await User.create(req.body);
-      req.session.save(() => {
-        // req.session.user_id = userData.id;
-        req.session.name = userData.name;
-        req.session.email = userData.email;
-        req.session.project_name = userData.project_name;
-        req.session.loggedIn = true;
-        res.json(userData);
-        // res.redirect('/portal')
-  });
-}    catch (err) {
-  res.status(400).json(err);
-}
+    req.session.save(() => {
+      // req.session.user_id = userData.id;
+      req.session.name = userData.name;
+      req.session.email = userData.email;
+      req.session.project_name = userData.project_name;
+      req.session.loggedIn = true;
+      res.json(userData);
+      // res.redirect('/portal')
+    });
+  } catch (err) {
+    res.status(400).json(err);
+  }
 });
 
 //Get user and add project name to the portal
 router.get('/portal', async (req, res) => {
-    try {
-      console.log(req.session.user_id);
-      let userData = await User.findByPk(req.session.user_id); 
-  
-      const users = userData.get({plain: true});
-      
-      res.render('portal', {
-        users
-      });
-    } catch (error) {
-      console.log(error);
-      res.status(500).json({error: error});
-    }
-  
-  });
+  try {
+    console.log(req.session.user_id);
+    let userData = await User.findByPk(req.session.user_id);
+
+    const users = userData.get({ plain: true });
+
+    res.render('portal', {
+      users
+    });
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({ error: error });
+  }
+
+});
 
 //Be able to go to these pages
 router.get('/donation', (req, res) => res.render('donation'));
 router.get('/projects', (req, res) => res.render('projects'));
 router.get('/donation', (req, res) => res.render('donation'));
-router.get('/landing',(req, res) => res.render('landing'));
+router.get('/landing', (req, res) => res.render('landing'));
 
 
 module.exports = router;
