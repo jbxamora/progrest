@@ -6,12 +6,7 @@ class Volunteer extends Model {}
 
 Volunteer.init(
   {
-    id: {
-      type: DataTypes.INTEGER,
-      allowNull: false,
-      primaryKey: true,
-      autoIncrement: true,
-    },
+
     hours: {
       type: DataTypes.INTEGER,
       allowNull: false,

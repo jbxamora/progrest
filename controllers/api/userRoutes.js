@@ -76,6 +76,31 @@ router.delete('/:id', (req, res) => {
       res.status(500).json(err);
     });
 });
+
+// find one user
+router.get('/:id', (req, res) => {
+  User.findOne({
+    where: {
+      id: req.params.id
+    }
+  })
+    .then(dbPostData => {
+      if (!dbPostData) {
+        res.status(404).json({ message: 'No post found with this id' });
+        return;
+      }
+      res.json(dbPostData);
+    })
+    .catch(err => {
+      console.log(err);
+      res.status(500).json(err);
+    });
+});
+
+
+
+
+
 router.get('/hours', async (req, res) => {
   try {
     // Get all projects and JOIN with user data

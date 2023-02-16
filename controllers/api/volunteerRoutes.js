@@ -3,7 +3,14 @@ const router = require('express').Router();
 const { Volunteer, User } = require('../../models');
 const withAuth = require('../../utils/auth');
 
-router.get('/', async (req, res) => {
+router.get('/', (req, res) => 
+  Volunteer.findAll()
+    .then(volunteer => res.json(volunteer))
+    .catch(err => res.json(err)));
+
+
+
+router.get('/hours', async (req, res) => {
   try {
     // Get all projects and JOIN with user data
     const volunteerData = await Volunteer.findAll({
@@ -19,7 +26,7 @@ router.get('/', async (req, res) => {
     const volunteers = volunteerData.map((volunteer) => volunteer.get({ plain: true }));
 
     // Pass serialized data and session flag into template
-    res.send(volunteers);
+    res.json(volunteers);
   } catch (err) {
     res.status(500).json(err);
   }

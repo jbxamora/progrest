@@ -4,9 +4,10 @@ const userData = require('./userData.json');
 const volunteerData = require('./volunteerData.json');
 const donationData = require('./donationData.json');
 
-
+//seedDatabase using seq sync
 const seedDatabase = async () => {
   await sequelize.sync({ force: true });
+  
   console.log('\n----- DATABASE SYNCED -----\n');
 
   await User.bulkCreate(userData, {
@@ -16,7 +17,7 @@ const seedDatabase = async () => {
   console.log('\n----- USER SEEDED -----\n');
   
  
-  await Volunteer.create({
+  await Volunteer.bulkCreate(volunteerData, {
     individualHooks: true,
     returning: true,
   });
@@ -24,7 +25,7 @@ const seedDatabase = async () => {
   console.log('\n----- VOLUNTEER SEEDED -----\n');
   
 
-    Donation.create({
+  await  Donation.bulkCreate(donationData,{
       individualHooks: true,
       returning: true,
     });
