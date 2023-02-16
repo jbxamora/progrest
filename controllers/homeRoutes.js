@@ -49,7 +49,8 @@ router.post('/donation',async (req, res) => {
   res.status(400).json(err);
 }
 });
-//Get user and add project to template
+
+//Get user and add project name to the portal
 router.get('/portal', async (req, res) => {
     try {
       console.log(req.session.user_id);

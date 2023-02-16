@@ -5,7 +5,7 @@ async function signupFormHandler(event) {
     const project_name = document.querySelector('#project_name').value;
     const email = document.querySelector('#email-signup').value.trim();
 
-
+//if name pass project and email POST which will go to the backend
     if (name && password && project_name && email) {
         const response = await fetch('/donation', {
             method: 'POST',
@@ -31,5 +31,5 @@ async function signupFormHandler(event) {
     }
 
 }
-
+//when click submit post 
 document.getElementById("signup-form").addEventListener("submit",signupFormHandler);

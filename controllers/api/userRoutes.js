@@ -77,7 +77,7 @@ router.delete('/:id', (req, res) => {
     });
 });
 
-// find one user
+// find one user by www.website.com/api/users/1
 router.get('/:id', (req, res) => {
   User.findOne({
     where: {
@@ -100,7 +100,7 @@ router.get('/:id', (req, res) => {
 
 
 
-
+// find hours through users by www.website.com/api/users/hours
 router.get('/hours', async (req, res) => {
   try {
     // Get all projects and JOIN with user data
