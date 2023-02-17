@@ -1,7 +1,8 @@
-//route for volunteers
 const router = require('express').Router();
 const { Volunteer, User } = require('../../models');
 const withAuth = require('../../utils/auth');
+
+
 //GET hours connected to user_id
 router.get('/', (req, res) =>
   Volunteer.findAll()
@@ -31,6 +32,27 @@ router.get('/hours', async (req, res) => {
     res.status(500).json(err);
   }
 });
+
+//find by project name
+router.get('/project/:project_name', async (req, res) => {
+
+    User.findAll({
+      where: {
+        project_name: req.params.project_name,
+      }
+    })
+      .then(dbPostData => {
+        if (!dbPostData) {
+          res.status(404).json({ message: 'No post found with this id' });
+          return;
+        }
+        res.json(dbPostData);
+      })
+      .catch(err => {
+        console.log(err);
+        res.status(500).json(err);
+      });
+  });
 
 
 

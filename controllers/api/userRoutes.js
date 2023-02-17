@@ -98,31 +98,6 @@ router.get('/:id', (req, res) => {
 });
 
 
-
-
-// find hours through users by www.website.com/api/users/hours
-router.get('/hours', async (req, res) => {
-  try {
-    // Get all projects and JOIN with user data
-    const userData = await User.findAll({
-      include: [
-        {
-          model: Volunteer,
-          attributes: ['hours']
-        },
-      ],
-    });
-
-    // Serialize data so the template can read it
-    const users = userData.map((user) => user.get({ plain: true }));
-    console.log(users);
-    // Pass serialized data and session flag into template
-    res.send(users);
-  } catch (err) {
-    res.status(500).json(err);
-  }
-});
-
 module.exports = router;
 
 
