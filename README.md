@@ -28,17 +28,6 @@ Then it should return accurate and up-to-date information.
 When a POST route is implemented to add new volunteer information,
 Then it should be able to add the information to the database accurately and efficiently.
 ```
-### Donations Tracking
-```md
-When the database for donation information is created, 
-Then it should be able to store donation information accurately.
-When a payment gateway such as Stripe is integrated into the application,
-Then it should securely process donations and store the information accurately.
-When a GET route is implemented to retrieve donation information,
-Then it should return accurate and up-to-date information.
-When a POST route is implemented to add new donation information
-Then it should be able to add the information to the database accurately and efficiently.
-```
 ### User Authentication
 ```md
 When express-session and cookies are used to implement user authentication,
@@ -224,9 +213,6 @@ const seedDatabase = async () => {
 ## Features
 
 - Volunteer hours tracking
-- Donations tracking
-- Secure payment processing through a payment gateway (such as Stripe)
-- Impact metrics measurement
 - User authentication using express-session and cookies
 - Responsive and accessible UI design using HTML, CSS, and JavaScript (with support from Handlebars.js for templating)
 - Integration with MySQL database using Sequelize ORM
